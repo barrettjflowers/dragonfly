@@ -1,3 +1,6 @@
-A game programmed in Pygame to familiarize myself with the library.
+## Dragon Fly!
 
-Fly higher to increase your score, don't hit the barriers! ps. Includes screen wrapping :)
+### Written in Pygame
+Pygame module not included, please do `pip3 install pygame`.
+
+Project incomplete, see TODO at bottom of `main.py`.
