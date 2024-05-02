@@ -1,2 +1,6 @@
-A game that I programmed in Pygame to familiarize myself with the library.
-The repo includes pygame, no need to install the module.
+## Dragon Fly!
+
+### Written in Pygame
+Pygame module not included, please do `pip3 install pygame`.
+
+Project incomplete, see TODO at bottom of `main.py`.

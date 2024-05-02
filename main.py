@@ -8,7 +8,6 @@ from barriers import Barrier
 import random
 from sys import exit
 
-#Globals
 gravity = 0
 velocity = 0
 state = True
@@ -50,9 +49,6 @@ while state:
                 Barrier.bpos_x = Barrier.random_int
                 Barrier.bpos_rx = Barrier.bpos_x + Barrier.barrier_rect.right + 125
                 menu = False
-        # if event.type == score_up:
-        #     score += 1
-        #     print(score)
 
     #Controls
     keys = pygame.key.get_pressed()
@@ -77,8 +73,8 @@ while state:
     player_y += gravity
     if gravity >= 20:
         gravity = 20
-    if velocity >= 10:
-        velocity = 10
+    if velocity >= 8:
+        velocity = 8 
 
     #Screen Wrapping
     if player_x + player_rect.right <= 0:
@@ -97,17 +93,13 @@ while state:
         death = pygame.mixer.Sound("source/audio/death.wav")
         death.set_volume(0.20)
         death.play()
+        score = 0
         pygame.time.delay(800)
     if menu == True:
         gravity = -.5
     if player_y + player_rect.top <= 0:
         player_y = 0 - player_rect.top
         gravity = 0
-
-    #Score
-    """if player_y <= Barrier.bpos_y:
-        #score += 1
-        print(score)"""
 
     #Collision
     if player_y >= Barrier.bpos_y and player_y <= Barrier.bpos_y + Barrier.barrier_rect.bottom and player_x <= Barrier.bpos_x + Barrier.barrier_rect.right:
@@ -118,6 +110,7 @@ while state:
         death = pygame.mixer.Sound("source/audio/death.wav")
         death.set_volume(0.20)
         death.play()
+        score = 0
         pygame.time.delay(800)
     elif player_y >= Barrier.bpos_ry and player_y <= Barrier.bpos_y + Barrier.barrierr_rect.bottom and player_x + player_rect.right >= Barrier.bpos_rx:
         menu = True
@@ -128,6 +121,7 @@ while state:
         death = pygame.mixer.Sound("source/audio/death.wav")
         death.set_volume(0.20)
         death.play()
+        score = 0
         pygame.time.delay(800)
 
     #Title Bobbing
@@ -149,6 +143,14 @@ while state:
         screen.blit(Barrier.barrier_r,(Barrier.bpos_rx, Barrier.bpos_ry))
         if Barrier.bpos_y >= height:
             Barrier(True)
+            score+=1
+            print(score)
+
+    if score:
+       white = (255, 255, 255)
+       font = pygame.font.SysFont(None, 48)
+       img = font.render(str(score), True, white)
+       screen.blit(img, (20, 20))
 
     if menu == True:
         screen.blit(title, (title_x, title_y))
@@ -157,3 +159,9 @@ while state:
 
     pygame.display.update()
     clock.tick(60)
+
+    # TODO
+    # [] Add high score file, read from save.
+    # [] Fix score font.
+    # [] Add sprite animation for Dragon.
+    # [] Add controls screen/ add controls to main menu.
