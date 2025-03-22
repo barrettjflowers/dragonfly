@@ -1,6 +1,6 @@
 ## Dragon Fly!
 
 ### Written in Pygame
-Pygame module not included, please do `pip3 install pygame`.
+A dragon flies through the sky avoiding obstacles. Fly longer for a higher score!
 
-Project incomplete, see TODO at bottom of `main.py`.
+`pip3 install pygame` to compile.
