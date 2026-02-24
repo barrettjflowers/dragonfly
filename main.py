@@ -1,4 +1,5 @@
 import pygame
+pygame.init()
 from pygame.constants import K_a, K_d
 from player import *
 from window import *
@@ -16,7 +17,6 @@ menu = True
 score = 0
 Barrier(False)
 
-pygame.init()
 
 while state:
 
